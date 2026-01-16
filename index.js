@@ -2,13 +2,13 @@ const express=require('express')
 const mongoose=require('mongoose')
 const cors=require('cors')
 const UserModel = require('./models/Users')
-
+require('dotenv').config()
 
 const app=express()
 app.use(cors()) //accesss node to frontend
 app.use(express.json()) //access fonted to backend
 
-mongoose.connect("mongodb://127.0.0.1:27017/crud")
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log("✅ MongoDB connected");
   })
